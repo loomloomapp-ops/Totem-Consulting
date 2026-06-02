@@ -7,6 +7,35 @@
 (function () {
   'use strict';
 
+  /* ---------- Brand preloader ----------
+     Holds the brand intro for a short minimum, then dissolves once the
+     page has loaded. Hard fallback guarantees it always disappears. */
+  (function () {
+    var pre = document.getElementById('preloader');
+    if (!pre) { document.body.classList.remove('pl-active'); return; }
+    var started = Date.now(), MIN = 1350, MAX = 4500, done = false;
+    function reveal() {
+      if (done) return; done = true;
+      var wait = Math.max(0, MIN - (Date.now() - started));
+      window.setTimeout(function () {
+        pre.classList.add('is-leaving');
+        document.body.classList.remove('pl-active'); // unlock scroll + reveal site
+        var cleaned = false;
+        function cleanup() {
+          if (cleaned) return; cleaned = true;
+          if (pre && pre.parentNode) pre.parentNode.removeChild(pre);
+        }
+        pre.addEventListener('transitionend', function (e) {
+          if (e.target === pre && e.propertyName === 'opacity') cleanup();
+        });
+        window.setTimeout(cleanup, 1100); // fallback if transitionend never fires
+      }, wait);
+    }
+    if (document.readyState === 'complete') reveal();
+    else window.addEventListener('load', reveal);
+    window.setTimeout(reveal, MAX); // absolute fallback regardless of load state
+  })();
+
   /* ---------- TELEGRAM ---------- */
   var TELEGRAM_BOT_TOKEN = ''; // токен від @BotFather
   var TELEGRAM_CHAT_ID   = ''; // chat_id (напр. через @userinfobot)
