@@ -13,7 +13,7 @@
   (function () {
     var pre = document.getElementById('preloader');
     if (!pre) { document.body.classList.remove('pl-active'); return; }
-    var started = Date.now(), MIN = 1350, MAX = 4500, done = false;
+    var started = Date.now(), MIN = 1600, MAX = 4500, done = false;
     function reveal() {
       if (done) return; done = true;
       var wait = Math.max(0, MIN - (Date.now() - started));
