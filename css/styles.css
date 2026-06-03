@@ -297,7 +297,7 @@ body.menu-open .mobile-menu { opacity: 1; visibility: visible; }
 
 /* ---------- Services accordion (single-column stack) ---------- */
 .acc { margin-top: clamp(2.5rem, 5vw, 4rem); display: grid; grid-template-columns: 1fr; gap: clamp(1rem, 1.8vw, 1.6rem); align-items: start; }
-.acc-item { border: 1px solid var(--line); border-radius: var(--r-card); background: rgba(255,255,255,0.012); padding-inline: clamp(1.3rem, 2.2vw, 2rem); transition: border-color 0.35s var(--ease), background 0.35s var(--ease); }
+.acc-item { border: 1px solid var(--line); border-radius: var(--r-card); background: rgba(255,255,255,0.05); backdrop-filter: blur(10px) saturate(130%); -webkit-backdrop-filter: blur(10px) saturate(130%); padding-inline: clamp(1.3rem, 2.2vw, 2rem); transition: border-color 0.35s var(--ease), background 0.35s var(--ease); }
 .acc-item.open { background: rgba(255,255,255,0.78); border-color: rgba(255,255,255,0.4); backdrop-filter: blur(10px); -webkit-backdrop-filter: blur(10px); }
 .acc-head { width: 100%; text-align: left; display: grid; grid-template-columns: auto 1fr auto; gap: 1.1rem; align-items: center; padding: clamp(1.3rem, 2.2vw, 1.8rem) 0; }
 .acc-num { font-family: var(--serif); font-style: italic; font-weight: 500; font-size: 1.5rem; color: var(--text); line-height: 1; opacity: 0.3; letter-spacing: 0.01em; transition: opacity 0.35s var(--ease), color 0.35s var(--ease); }
@@ -404,11 +404,13 @@ body.menu-open .mobile-menu { opacity: 1; visibility: visible; }
 /* ---------- CTA form ---------- */
 .cta-bold {
   background: none; border: none; border-radius: 0; padding: 0; color: var(--text);
-  display: grid; grid-template-columns: 1fr 1fr; gap: clamp(2rem, 5vw, 4rem); align-items: center;
+  display: grid; grid-template-columns: 1fr 1fr; gap: clamp(2rem, 5vw, 4rem); align-items: start;
   position: relative; isolation: isolate;
 }
 .cta-bold::after { display: none; }
 .cta-bold > * { position: relative; z-index: 1; }
+/* text column rides along on scroll, identical to the Contacts intro */
+.cta-intro { position: sticky; top: 110px; align-self: start; }
 .cta-bold h2 .serif { color: var(--accent-text); }
 .cta-checks { margin-top: 1.8rem; display: flex; flex-direction: column; gap: 0.9rem; }
 .cta-checks li { display: flex; align-items: center; gap: 0.8rem; color: var(--text); font-size: 1.02rem; }
@@ -441,11 +443,11 @@ body.menu-open .mobile-menu { opacity: 1; visibility: visible; }
 .form-success h3 { margin-bottom: 0.5rem; }
 
 /* ---------- Footer ---------- */
-/* transition band: striped blinds melting from the dark page into the white footer */
-.footer-fade { display: flex; flex-direction: column; height: clamp(150px, 18vw, 250px); overflow: hidden; }
-.footer-fade .fb-bar { flex: 1; width: 100%; border-top: 1.5px solid rgba(6,5,12,0.5); opacity: 0; animation: fbReveal 0.6s var(--ease) both; animation-delay: calc(var(--i) * 55ms); }
-.footer-fade .fb-bar:first-child { border-top: none; }
-.footer-fade .fb-dash { border-top: 1.5px dashed rgba(150,150,160,0.85); }
+/* transition band: black/white blinds whose duty cycle eases dark page -> white footer */
+.footer-fade { display: flex; flex-direction: column; height: clamp(160px, 19vw, 260px); overflow: hidden; }
+.footer-fade .fb-bar { flex: 1; width: 100%; opacity: 0; animation: fbReveal 0.6s var(--ease) both; animation-delay: calc(var(--i) * 45ms); }
+.footer-fade .fb-dash { position: relative; }
+.footer-fade .fb-dash::before { content: ""; position: absolute; left: 0; right: 0; top: 46%; height: 0; border-top: 1.5px dashed rgba(150,150,160,0.8); }
 @keyframes fbReveal { from { opacity: 0; } to { opacity: 1; } }
 @media (prefers-reduced-motion: reduce) { .footer-fade .fb-bar { animation: none; opacity: 1; } }
 
@@ -503,7 +505,7 @@ body.menu-open .mobile-menu { opacity: 1; visibility: visible; }
 @media (max-width: 1024px) {
   :root { --gutter: 40px; }
   .head-row, .ceo-grid, .contact-grid, .cta-bold, .case, .case--rev, .acc { grid-template-columns: 1fr; }
-  .contact-intro { position: static; top: auto; order: 0; }
+  .contact-intro, .cta-intro { position: static; top: auto; order: 0; }
   .contact-card { order: 0; }
   .head-main .h2 { max-width: 22ch; }
   .head-row .lead { max-width: 60ch; }
