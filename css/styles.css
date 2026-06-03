@@ -298,7 +298,7 @@ body.menu-open .mobile-menu { opacity: 1; visibility: visible; }
 /* ---------- Services accordion (single-column stack) ---------- */
 .acc { margin-top: clamp(2.5rem, 5vw, 4rem); display: grid; grid-template-columns: 1fr; gap: clamp(1rem, 1.8vw, 1.6rem); align-items: start; }
 .acc-item { border: 1px solid var(--line); border-radius: var(--r-card); background: rgba(255,255,255,0.012); padding-inline: clamp(1.3rem, 2.2vw, 2rem); transition: border-color 0.35s var(--ease), background 0.35s var(--ease); }
-.acc-item.open { background: rgba(255,255,255,0.92); border-color: rgba(255,255,255,0.5); backdrop-filter: blur(6px); -webkit-backdrop-filter: blur(6px); }
+.acc-item.open { background: rgba(255,255,255,0.78); border-color: rgba(255,255,255,0.4); backdrop-filter: blur(10px); -webkit-backdrop-filter: blur(10px); }
 .acc-head { width: 100%; text-align: left; display: grid; grid-template-columns: auto 1fr auto; gap: 1.1rem; align-items: center; padding: clamp(1.3rem, 2.2vw, 1.8rem) 0; }
 .acc-num { font-family: var(--serif); font-style: italic; font-weight: 500; font-size: 1.5rem; color: var(--text); line-height: 1; opacity: 0.3; letter-spacing: 0.01em; transition: opacity 0.35s var(--ease), color 0.35s var(--ease); }
 .acc-item.open .acc-num { color: var(--accent); opacity: 0.85; }
@@ -413,7 +413,23 @@ body.menu-open .mobile-menu { opacity: 1; visibility: visible; }
 .cta-checks { margin-top: 1.8rem; display: flex; flex-direction: column; gap: 0.9rem; }
 .cta-checks li { display: flex; align-items: center; gap: 0.8rem; color: var(--text); font-size: 1.02rem; }
 .cta-checks li svg { width: 20px; height: 20px; flex: none; color: var(--accent-text); }
-.form-card { background: rgba(21,12,70,0.34); border: 1px solid rgba(107,93,211,0.30); border-radius: var(--r-lg); padding: clamp(1.5rem, 3vw, 2.2rem); backdrop-filter: blur(22px) saturate(140%); -webkit-backdrop-filter: blur(22px) saturate(140%); box-shadow: 0 24px 60px -28px rgba(21,12,70,0.65); }
+/* application form — the focal point: bright frosted card with an accent glow */
+.form-card { background: rgba(255,255,255,0.95); border: 1px solid rgba(255,255,255,0.65); border-radius: var(--r-lg); padding: clamp(1.6rem, 3vw, 2.4rem); backdrop-filter: blur(18px) saturate(140%); -webkit-backdrop-filter: blur(18px) saturate(140%); box-shadow: 0 36px 80px -32px rgba(21,12,70,0.75), 0 0 0 6px rgba(107,93,211,0.10); }
+.form-card label { color: rgba(21,12,70,0.66); }
+.form-card input { background: #fff; border: 1px solid rgba(21,12,70,0.18); color: var(--accent); }
+.form-card input::placeholder { color: rgba(21,12,70,0.4); }
+.form-card input:focus { border-color: var(--accent); background: #fff; box-shadow: 0 0 0 3px rgba(107,93,211,0.18); }
+.form-card .field.has-error input { border-color: #c2452f; }
+.form-card .err { color: #c2452f; }
+.form-card .form-note { color: rgba(21,12,70,0.5); }
+/* submit becomes a solid accent button so it reads on the light card */
+.form-card .btn { background: var(--accent); color: #fff; }
+.form-card .btn:hover { background: var(--accent-2); }
+.form-card .btn .btn-circle { background: #fff; }
+.form-card .btn .btn-circle svg { color: var(--accent); }
+.form-card .form-success .check { background: rgba(21,12,70,0.10); color: var(--accent); }
+.form-card .form-success h3 { color: var(--accent); }
+.form-card .form-success .muted { color: rgba(21,12,70,0.62); }
 .field { margin-bottom: 1rem; }
 .field label { display: block; font-size: 0.78rem; letter-spacing: 0.08em; text-transform: uppercase; color: var(--text-3); margin-bottom: 0.5rem; font-weight: 600; }
 .field input { width: 100%; background: var(--bg); border: 1px solid var(--line); border-radius: 12px; padding: 0.9rem 1rem; color: var(--text); font-size: 1rem; transition: border-color 0.25s, background 0.25s; font-family: var(--font-body); }
@@ -430,23 +446,30 @@ body.menu-open .mobile-menu { opacity: 1; visibility: visible; }
 .form-success h3 { margin-bottom: 0.5rem; }
 
 /* ---------- Footer ---------- */
-.footer { background: #0a0a11; border-top: 1px solid var(--line); padding-top: 70px; padding-bottom: 1.5rem; }
+/* transition band: the dark page dissolves (blinds-style) into the white footer */
+.footer-fade { position: relative; height: clamp(110px, 14vw, 190px); background: linear-gradient(180deg, var(--bg) 0%, #ffffff 100%); }
+.footer-fade::after { content: ""; position: absolute; inset: 0; background: repeating-linear-gradient(180deg, rgba(8,8,13,0.85) 0 7px, transparent 7px 16px); -webkit-mask-image: linear-gradient(180deg, #000 0%, transparent 82%); mask-image: linear-gradient(180deg, #000 0%, transparent 82%); }
+
+/* light footer — surface white, type + logo in the firm accent #150C46 */
+.footer { background: #ffffff; color: var(--accent); border-top: none; padding-top: 60px; padding-bottom: 1.5rem; }
+.footer::before { display: none; }
 .footer-top { display: grid; grid-template-columns: 1.5fr 0.8fr 1fr; gap: clamp(2rem, 4vw, 4rem); padding-bottom: 2.6rem; }
-.footer-desc { color: var(--text-2); margin-top: 1.1rem; max-width: 36ch; line-height: 1.6; font-size: 0.95rem; }
-.footer-col h4 { font-size: 1.1rem; font-weight: 600; margin-bottom: 1.1rem; }
+.footer-brand .brand-logo { height: 34px; width: auto; }
+.footer-desc { color: rgba(21,12,70,0.6); margin-top: 1.1rem; max-width: 36ch; line-height: 1.6; font-size: 0.95rem; }
+.footer-col h4 { font-size: 1.1rem; font-weight: 600; margin-bottom: 1.1rem; color: var(--accent); }
 .footer-col ul { display: flex; flex-direction: column; gap: 0.7rem; }
-.footer-col a { color: var(--text-2); font-size: 0.96rem; transition: color 0.25s; }
-.footer-col a:hover { color: var(--accent-text); }
-.footer-meta { display: grid; grid-template-columns: repeat(3, auto); justify-content: space-between; gap: 1.5rem; padding: 2rem 0; border-top: 1px solid var(--line); }
-.footer-meta .fm-label { font-size: 0.8rem; color: var(--text-3); }
-.footer-meta .fm-value { font-size: 1.05rem; font-weight: 500; margin-top: 0.2rem; }
+.footer-col a { color: rgba(21,12,70,0.6); font-size: 0.96rem; transition: color 0.25s; }
+.footer-col a:hover { color: var(--accent); }
+.footer-meta { display: grid; grid-template-columns: repeat(3, auto); justify-content: space-between; gap: 1.5rem; padding: 2rem 0; border-top: 1px solid rgba(21,12,70,0.12); }
+.footer-meta .fm-label { font-size: 0.8rem; color: rgba(21,12,70,0.45); }
+.footer-meta .fm-value { font-size: 1.05rem; font-weight: 500; margin-top: 0.2rem; color: var(--accent); }
 .footer-meta a.fm-link { display: inline-block; transition: color 0.25s; }
-.footer-meta a.fm-link:hover { color: var(--accent-text); }
-.footer-bar { background: var(--surface); border: 1px solid var(--line); border-radius: var(--r-lg); padding: 1.4rem 1.8rem; display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap; gap: 1rem; }
+.footer-meta a.fm-link:hover { color: var(--accent-2); }
+.footer-bar { background: rgba(21,12,70,0.05); border: 1px solid rgba(21,12,70,0.12); border-radius: var(--r-lg); padding: 1.4rem 1.8rem; display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap; gap: 1rem; }
 .footer-bar .fb-links { display: flex; gap: 1.4rem; flex-wrap: wrap; }
-.footer-bar a { color: var(--text-2); font-size: 0.9rem; }
-.footer-bar a:hover { color: var(--accent-text); }
-.footer-bar .copy { color: var(--text-3); font-size: 0.86rem; }
+.footer-bar a { color: rgba(21,12,70,0.62); font-size: 0.9rem; }
+.footer-bar a:hover { color: var(--accent); }
+.footer-bar .copy { color: rgba(21,12,70,0.45); font-size: 0.86rem; }
 
 /* ---------- Floating widget + sticky CTA ---------- */
 .floating-widget { position: fixed; right: 1.6rem; bottom: 1.6rem; z-index: 80; display: inline-flex; align-items: center; gap: 0.6rem; background: #fff; color: var(--accent); padding: 0.85rem 1.3rem; border-radius: var(--r-pill); font-weight: 600; font-size: 0.94rem; box-shadow: 0 18px 40px -14px rgba(0,0,0,0.45); transform: translateY(160%); transition: transform 0.55s var(--ease), background 0.3s; }
