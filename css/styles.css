@@ -431,10 +431,10 @@ body.menu-open .mobile-menu { opacity: 1; visibility: visible; }
 .field.has-error input { border-color: var(--accent-text); }
 .field .err { font-size: 0.8rem; color: var(--accent-text); margin-top: 0.35rem; min-height: 1em; opacity: 0; transform: translateY(-3px); transition: opacity 0.25s, transform 0.25s; }
 .field.has-error .err { opacity: 1; transform: translateY(0); }
-/* application form: lighter frosted-white input fields (50% white) with dark firm-colour text */
-.form-card .field input { background: rgba(255,255,255,0.5); border: 1px solid rgba(255,255,255,0.4); color: var(--accent); }
+/* application form: frosted white input fields — light transparency + blur, dark firm-colour text */
+.form-card .field input { background: rgba(255,255,255,0.78); border: 1px solid rgba(255,255,255,0.5); color: var(--accent); backdrop-filter: blur(10px) saturate(140%); -webkit-backdrop-filter: blur(10px) saturate(140%); }
 .form-card .field input::placeholder { color: rgba(21,12,70,0.55); }
-.form-card .field input:focus { background: rgba(255,255,255,0.64); border-color: var(--accent); }
+.form-card .field input:focus { background: rgba(255,255,255,0.9); border-color: var(--accent); }
 .form-note { font-size: 0.8rem; color: var(--text-3); margin-top: 0.6rem; }
 .form-card .btn { margin-top: 0.4rem; }
 .form-success { display: none; text-align: center; padding: clamp(1.5rem, 4vw, 3rem) 0.5rem; }
