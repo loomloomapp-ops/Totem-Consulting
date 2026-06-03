@@ -526,9 +526,8 @@ body.menu-open .mobile-menu { opacity: 1; visibility: visible; }
   .contact-actions { flex-direction: column; gap: 0.7rem; }
   .contact-actions .btn--icon { width: 100%; flex-direction: row-reverse; justify-content: space-between; padding: 9px 9px 9px 22px; }
 
-  /* 6 — application form: smooth vertical gradient (no harsh band) + wider inner form */
-  .cta-bold { padding: 1.25rem; background: linear-gradient(180deg, #1c1550 0%, #131036 52%, #0c0b14 100%); }
-  .cta-bold::after { left: 50%; top: -14%; transform: translateX(-50%); width: 130%; height: 46%; opacity: 0.6; }
+  /* 6 — application form: no surrounding container; accent blur lives on the form card */
+  .cta-bold { padding: 0; background: none; }
   .form-card { padding: 1.15rem; }
 
   /* 3 — partner photos: reveal faces inside the frame; logos small + never off-screen */
