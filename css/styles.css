@@ -118,6 +118,9 @@ h1, h2, h3, h4 { font-family: var(--font-display); font-weight: 600; line-height
 /* outline pill — same size as primary, used for secondary CTA (Instagram) */
 .btn--line { background: rgba(255,255,255,0.04); color: var(--text); border-color: var(--line-2); }
 .btn--line:hover { background: rgba(255,255,255,0.10); border-color: var(--line-2); }
+/* glass circle on the secondary (Instagram) hero button */
+.btn--line .btn-circle { background: rgba(255,255,255,0.18); backdrop-filter: blur(8px); -webkit-backdrop-filter: blur(8px); box-shadow: inset 0 0 0 1px rgba(255,255,255,0.22); }
+.btn--line .btn-circle svg { color: #fff; }
 /* text-only outline buttons (tertiary) */
 .btn--ghost { background: transparent; color: var(--text); border-color: var(--line-2); padding: 13px 22px; }
 .btn--ghost:hover { background: rgba(255,255,255,0.06); border-color: var(--accent-text); }
@@ -252,9 +255,9 @@ body.menu-open .mobile-menu { opacity: 1; visibility: visible; }
   display: flex; flex-direction: column; align-items: flex-end; justify-content: space-between;
   gap: 1.6rem; text-align: right;
 }
-.head-tag { color: var(--accent-text); letter-spacing: 0.22em; padding-top: 0.45rem; opacity: 0.5; }
+.head-tag { color: var(--text); letter-spacing: 0.22em; padding-top: 0.45rem; opacity: 0.5; }
 .eyebrow--soft { opacity: 0.5; }
-.eyebrow--accent { color: var(--accent-text); opacity: 0.5; letter-spacing: 0.22em; }
+.eyebrow--accent { color: var(--text); opacity: 0.5; letter-spacing: 0.22em; }
 
 /* ---------- CEO (value card + tabs) ---------- */
 .ceo-grid { margin-top: clamp(2.5rem, 5vw, 4rem); display: grid; grid-template-columns: 0.95fr 1.05fr; gap: clamp(2rem, 5vw, 4.5rem); align-items: stretch; }
@@ -440,11 +443,11 @@ body.menu-open .mobile-menu { opacity: 1; visibility: visible; }
 .footer-bar .copy { color: var(--text-3); font-size: 0.86rem; }
 
 /* ---------- Floating widget + sticky CTA ---------- */
-.floating-widget { position: fixed; right: 1.6rem; bottom: 1.6rem; z-index: 80; display: inline-flex; align-items: center; gap: 0.6rem; background: var(--accent-text); color: var(--on-accent); padding: 0.85rem 1.3rem; border-radius: var(--r-pill); font-weight: 600; font-size: 0.94rem; box-shadow: 0 18px 40px -14px rgba(107,93,211,0.4); transform: translateY(160%); transition: transform 0.55s var(--ease), background 0.3s; }
+.floating-widget { position: fixed; right: 1.6rem; bottom: 1.6rem; z-index: 80; display: inline-flex; align-items: center; gap: 0.6rem; background: #fff; color: var(--accent); padding: 0.85rem 1.3rem; border-radius: var(--r-pill); font-weight: 600; font-size: 0.94rem; box-shadow: 0 18px 40px -14px rgba(0,0,0,0.45); transform: translateY(160%); transition: transform 0.55s var(--ease), background 0.3s; }
 .floating-widget.show { transform: translateY(0); }
-.floating-widget:hover { background: var(--accent-2); }
-.fw-pulse { width: 9px; height: 9px; border-radius: 50%; background: var(--on-accent); position: relative; }
-.fw-pulse::after { content: ""; position: absolute; inset: 0; border-radius: 50%; background: var(--on-accent); animation: pulse 2s ease-out infinite; }
+.floating-widget:hover { background: #ece9f7; }
+.fw-pulse { width: 9px; height: 9px; border-radius: 50%; background: var(--accent); position: relative; }
+.fw-pulse::after { content: ""; position: absolute; inset: 0; border-radius: 50%; background: var(--accent); animation: pulse 2s ease-out infinite; }
 @keyframes pulse { 0% { transform: scale(1); opacity: 0.6; } 100% { transform: scale(3.2); opacity: 0; } }
 .sticky-cta { position: fixed; left: 0; right: 0; bottom: 0; z-index: 80; padding: 0.7rem var(--gutter) calc(0.7rem + env(safe-area-inset-bottom)); background: rgba(10,9,16,0.92); backdrop-filter: blur(14px); border-top: 1px solid var(--line); transform: translateY(120%); transition: transform 0.5s var(--ease); display: none; }
 .sticky-cta.show { transform: translateY(0); }
