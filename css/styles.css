@@ -367,6 +367,12 @@ body.menu-open .mobile-menu { opacity: 1; visibility: visible; }
 .case-media img.photo { width: 100%; height: 100%; object-fit: cover; position: absolute; inset: 0; transition: transform 1s var(--ease); }
 .case:hover .case-media img.photo { transform: scale(1.04); }
 .case-media::after { content: ""; position: absolute; inset: 0; background: linear-gradient(180deg, rgba(8,8,13,0.55) 0%, transparent 24%, transparent 52%, rgba(10,9,15,0.5) 100%); }
+/* company cases (no portrait): centered brand plate on a clean dark field */
+.case-media--brand { display: flex; align-items: center; justify-content: center; padding: clamp(2rem, 4vw, 3.4rem); background: radial-gradient(120% 100% at 50% 0%, var(--surface-2) 0%, var(--surface) 70%); }
+.case-media--brand::after { display: none; }
+.brand-plate { background: #fff; border-radius: 22px; padding: clamp(2rem, 4vw, 3.2rem); display: flex; align-items: center; justify-content: center; box-shadow: 0 34px 70px -34px rgba(0,0,0,0.7); transition: transform 0.8s var(--ease); }
+.brand-plate img { width: clamp(180px, 50%, 280px); height: auto; display: block; }
+.case:hover .brand-plate { transform: translateY(-4px) scale(1.02); }
 /* premium brand marker — frosted dark chip, legible on any photo */
 .case-brand {
   position: absolute; left: clamp(1.2rem, 2vw, 1.8rem); top: clamp(1.2rem, 2vw, 1.8rem); z-index: 2;
@@ -399,6 +405,8 @@ body.menu-open .mobile-menu { opacity: 1; visibility: visible; }
   .case { position: sticky; transition: box-shadow 0.4s var(--ease); }
   .case:nth-child(1) { top: 104px; }
   .case:nth-child(2) { top: 136px; box-shadow: 0 -16px 50px -22px rgba(0,0,0,0.7); }
+  .case:nth-child(3) { top: 168px; box-shadow: 0 -16px 50px -22px rgba(0,0,0,0.7); }
+  .case:nth-child(4) { top: 200px; box-shadow: 0 -16px 50px -22px rgba(0,0,0,0.7); }
 }
 
 /* ---------- CTA form ---------- */
